@@ -6,7 +6,7 @@
 /*   By: kmgoduka <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/11 14:45:54 by kmgoduka          #+#    #+#             */
-/*   Updated: 2016/07/16 06:49:25 by kmgoduka         ###   ########.fr       */
+/*   Updated: 2016/08/05 19:09:04 by kmgoduka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<string.h>
@@ -66,14 +66,14 @@ int					ft_atoi(char c){
 					}
 					return(0);
 }
-/*int					ft_print(int num, ...){
+/*int				ft_print(int num, ...){
 					va_list valist;
 					va_start(valist, num);
 					ft_putnbr(num);
 					va_end(valist);	
 					return(0);
 }*/
-unsigned char				ft_itouch(int a){
+unsigned char		ft_itouch(int a){
 					unsigned char d;
 					d = 0;
 
@@ -84,7 +84,7 @@ unsigned char				ft_itouch(int a){
 						ft_putstr("Nah bruh. This shit is beyond me.\n");
 					return(d);
 }
-char					*ft_itoa(long int a){
+char				*ft_itoa(long int a){
 					int i;
 					int md;
 					int neg;
@@ -158,25 +158,24 @@ char					*ft_itoa(long int a){
 					}
 					return(answer);
 }
-long int				ft_tenner(int a, long int b){
-						int d;
-						d = 0;
-						if (a == 0)
-							return(b);
-						else{
-							while(d < a){
-								b = b * 10;
-								d++;
-							}
+long int			ft_tenner(int a, long int b){
+					int d;
+					d = 0;
+					if (a == 0)
+						return(b);
+					else{
+						while(d < a){
+							b = b * 10;
+							d++;
 						}
+					}
 					return(b);
 }
 int					ft_putnbr(int c){
 					ft_putstr(ft_itoa(c));
 					ft_putendl();
 					return(0);
-}
-
+}/*float			ft_atof(char *c)*/
 int					ft_linebreak(int linelen){
 					int i;
 					i = 0;
@@ -187,85 +186,88 @@ int					ft_linebreak(int linelen){
 					ft_putendl();
 					return(0);
 }
-void						*ft_memset(void *b, int c, size_t len){
-						ft_putstr("Memset Initialized!\n");
-						int i;
-						int sl;
-						int lenn;
-						unsigned char d;
-						unsigned char *p;
-						unsigned char *t;
-						p = 0;
-						ft_putstr("Variables Declared.\n");
-						d = ft_itouch(c);
-						i = 0;
-						sl = ft_strlen(b);
-						lenn = len;
-						ft_putstr("Assignments Completed.\n");
-						if (lenn > sl){
-							ft_putstr("Len > Str, but okay...");
-							int f;
-							f = 0;
-						/*	ft_putstr("Mallocing.\n");
-							p = malloc(sizeof(unsigned char)*(len + 1));
-							ft_putstr("Mallocinng Complete.\n"); */
-							t = (unsigned char *)malloc(sizeof(unsigned char)*(lenn + 1));
-							while(f < lenn){
-								ft_putstr("Len Whiling. Lololol. \n");
-								t[f] = d;
-								f++;
-							}
-							if (f >= lenn)
-								t[f] = '\0';
-							return(t);
+void				*ft_memset(void *b, int c, size_t len){
+					ft_putstr("Memset Initialized!\n");
+					int i;
+					int sl;
+					int lenn;
+					unsigned char d;
+					unsigned char *p;
+					unsigned char *t;
+					p = 0;
+					ft_putstr("Variables Declared.\n");
+					d = ft_itouch(c);
+					i = 0;
+					sl = ft_strlen(b);
+					lenn = len;
+					ft_putstr("Assignments Completed.\n");
+					if (lenn > sl){
+						ft_putstr("Len > Str, but okay...");
+						int f;
+						f = 0;
+					/*	ft_putstr("Mallocing.\n");
+						p = malloc(sizeof(unsigned char)*(len + 1));
+						ft_putstr("Mallocinng Complete.\n"); */
+						t = (unsigned char *)malloc(sizeof(unsigned char)*(lenn + 1));
+						while(f < lenn){
+							ft_putstr("Len Whiling. Lololol. \n");
+							t[f] = d;
+							f++;
 						}
-						else if (lenn <= sl){	
-							ft_putstr("LETS ROCK!\n");
-							p = (unsigned char*)b;
-							ft_putstr("temp array assigned and typecast is successful.\n");
-							while(i < lenn){
-								ft_putstr("Whiling. Lol. \n");
-								p[i] = d;
-								i++;
-							}
+						if (f >= lenn)
+							t[f] = '\0';
+						return(t);
+					}
+					else if (lenn <= sl){	
+						ft_putstr("LETS ROCK!\n");
+						p = (unsigned char*)b;
+						ft_putstr("temp array assigned and typecast is successful.\n");
+						while(i < lenn){
+							ft_putstr("Whiling. Lol. \n");
+							p[i] = d;
+							i++;
 						}
-						return(p);
+					}
+					return(p);
 }
 
-int						main(int argc, char **argv){
-						char *d;
-						int t;
-						t = 2987;
-						if (argc < 2){
-							ft_putstr("Not enough arguments. Hate me, please.\n");
-						}
-						else if (argc > 2){
-							ft_putstr("That's too many arguments.\nWhat is this, a relationship?\n");
-						}
-						else if (argc == 2){
-							ft_putstr("Nice argument. You should be a philosopher.\nNah I'm playing you suck.\n");
-							d = argv[1];
-							ft_putstr("Argument assigned. Let's Rock.\n");
-							ft_putstr("Argument: ");
-							ft_putstr(d);
-							ft_putendl();
-							ft_memset(d, '&', 4);
-							ft_putstr(d);
-							ft_putendl();
-							ft_putstr("ft_putnbr test\n");
-							ft_linebreak(50);
-					//		ft_print(3, 't', "rywgb rwtywrw", 545);
-							ft_putnbr(49075);
-							ft_putnbr(t);
-							ft_putstr("\nTest for zero\nDun Dun Duuuuuuun!!\n");
-							ft_linebreak(50);
-							ft_putnbr(0);
-							ft_putendl();
-							ft_putstr("\nTest for negative\nOh shit, here we go, motherfucker!! *Rick Voice*\n");
-							ft_linebreak(60);
-							ft_putnbr(-435);
-							ft_putendl();
-							ft_putstr("\nI CAN'T LOOK, WHAT DOES IT SAY LAD?!!\n:(!!\n");
-						}
-						return(0);
+int					main(int argc, char **argv){
+					char *d;
+					int t;
+					t = 2987;
+					if (argc < 2){
+						ft_putstr("Not enough arguments. Hate me, please.\n");
+					}
+					else if (argc > 2){
+						ft_putstr("That's too many arguments.\n");
+						ft_putstr("What is this, a relationship? FOH!\n");
+					}
+					else if (argc == 2){
+						ft_putstr("Nice argument. You should be a philosopher.\n");
+						ft_putstr("Nah I'm kidding, you suck.\n");
+						d = argv[1];
+						ft_putstr("Argument assigned. Let's Rock.\n");
+						ft_putstr("Argument: ");
+						ft_putstr(d);
+						ft_putendl();
+						ft_memset(d, '&', 4);
+						ft_putstr(d);
+						ft_putendl();
+						ft_putstr("ft_putnbr test\n");
+						ft_linebreak(50);
+				//		ft_print(3, 't', "rywgb rwtywrw", 545);
+						ft_putnbr(49075);
+						ft_putnbr(t);
+						ft_putstr("\nTest for zero\nDun Dun Duuuuuuun!!\n");
+						ft_linebreak(50);
+						ft_putnbr(0);
+						ft_putendl();
+						ft_putstr("\nTest for negative!");
+						ft_putstr("\nOh shit, here we go motherfucker!! *Rick Voice*\n");
+						ft_linebreak(60);
+						ft_putnbr(-435);
+						ft_putendl();
+						ft_putstr("\nI CAN'T LOOK, WHAT DOES IT SAY LAD?!!\n:(!!\n");
+					}
+					return(0);
 }
